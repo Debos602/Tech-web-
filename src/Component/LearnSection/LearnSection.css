@@ -1,0 +1,9 @@
+.learn-image {
+	background-image: url("../../assets/training.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: auto;
+	max-width: 100%;
+	border-radius: 5px;
+}
