@@ -20,18 +20,18 @@ const SliderSection = () => {
 		{ id: 6, img: `${Image5}`, name: "Aralsaln" },
 		{ id: 7, img: `${Image6}`, name: "Robert" },
 	];
-	const slidesPerView = window.innerWidth < 768 ? 2 : 3;
+	const slidesPerView = window.innerWidth < 768 ? 2 : 4;
 
 	return (
-		<div className="container mx-auto py-16">
+		<div className="container mx-auto py-16 px-20">
 			<h1 className="text-center text-5xl font-semibold text-sky-800 my-9">
 				Community Experts
 			</h1>
 			<Swiper
 				spaceBetween={50}
 				slidesPerView={slidesPerView}
-				onSlideChange={() => console.log("slide change")}
-				onSwiper={(swiper) => console.log(swiper)}
+				// onSlideChange={() => console.log("slide change")}
+				// onSwiper={(swiper) => console.log(swiper)}
 			>
 				{allData.map((data) => (
 					<SwiperSlide key={data.id}>

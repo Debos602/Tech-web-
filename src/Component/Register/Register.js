@@ -1,7 +1,69 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
+	const { createUser, updateUserData, verifyEmail, logOut } =
+		useContext(AuthContext);
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const [error, setError] = useState(null);
+	const navigate = useNavigate();
+
+	const handleEmailPassword = (event) => {
+		event.preventDefault();
+		// console.log(event.target.form.email.value);
+		const form = event.target;
+		const name = form.name.value;
+		const photo = form.photoURL.value;
+		const email = form.email.value;
+		const password = form.password.value;
+
+		if (password !== confirmPassword) {
+			setError("Password Does not match");
+			return;
+		}
+
+		createUser(email, password)
+			.then((result) => {
+				const user = result.user;
+				handleUpdateUserData(name, photo);
+				// handleEmailVerification();
+				navigate("/login");
+				handleLogOut();
+				console.log(user);
+				form.reset();
+				setConfirmPassword("");
+				toast.success("Please verify your email address");
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
+	const handleUpdateUserData = (name, photoURL) => {
+		const profile = {
+			displayName: name,
+			photoURL: photoURL,
+		};
+		updateUserData(profile)
+			.then(() => {})
+			.catch((error) => console.log(error));
+	};
+
+	// const handleEmailVerification = () => {
+	// 	verifyEmail()
+	// 		.then(() => {})
+
+	// 		.catch((error) => console.error(error));
+	// };
+	const handleLogOut = async () => {
+		try {
+			await logOut();
+		} catch (error) {
+			console.error(error);
+		}
+	};
 	return (
 		<div className="bg-indigo-950 py-10">
 			<div className="container mx-auto  ">
@@ -9,7 +71,7 @@ const Register = () => {
 					<div className="card w-full md:w-2/5 mx-auto glass p-3">
 						<div className="card-body text-white">
 							<h2 className="text-2xl font-bold">Register</h2>
-							<form className="">
+							<form onSubmit={handleEmailPassword} className="">
 								<div>
 									<label className="text-2xl flex" htmlFor="name">
 										Username
@@ -75,11 +137,11 @@ const Register = () => {
 										id="confirmPasswords"
 										name="confirmPasswords"
 										placeholder="Confirm your password"
-										// value={confirmPassword}
-										// onChange={(event) => setConfirmPassword(event.target.value)}
+										value={confirmPassword}
+										onChange={(event) => setConfirmPassword(event.target.value)}
 									/>
 								</>
-								{/* <p className="text-orange text-2xl">{error}</p> */}
+								<p className="text-orange text-2xl">{error}</p>
 								<button
 									className="btn bg-indigo-400 border-0 text-xl w-full my-2"
 									type="submit"

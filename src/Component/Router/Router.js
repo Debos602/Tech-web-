@@ -8,6 +8,7 @@ import Register from "../Register/Register";
 import ResetPassword from "../ResetPassword/ResetPassword";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Course from "../Course/Course";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
 	{
@@ -20,7 +21,11 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/course",
-				element: <Course></Course>,
+				element: (
+					<PrivateRoute>
+						<Course></Course>
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/faq",
