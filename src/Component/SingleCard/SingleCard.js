@@ -3,7 +3,7 @@ import { BiBlanket } from "react-icons/bi";
 
 const SingleCard = () => {
 	return (
-		<div className="container mx-auto px-20 -mt-[60px]">
+		<div className="container mx-auto px-20 -mt-[60px] md:-mt-[200px]">
 			<div className="">
 				<div className="flex flex-wrap justify-between -mx-4 md:mt-0 -mt-0">
 					<div className="px-4 w-full md:w-1/3 md:mt-0 mt-5">

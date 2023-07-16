@@ -35,19 +35,19 @@ const Header = ({ handleToggleTheme, isDarkMode }) => {
 							open ? "top-[70px]" : "top-[-300px]"
 						}`}
 					>
-						<li className="px-2 text-xl font-semibold">
+						<li className="px-2 py-1 text-xl font-semibold">
 							<Link to="/">Home</Link>
 						</li>
-						<li className="px-2 text-xl font-semibold">
+						<li className="px-2 py-1 text-xl font-semibold">
 							<Link to="/course">Course</Link>
 						</li>
-						<li className="px-2 text-xl font-semibold">
+						<li className="px-2 py-1 text-xl font-semibold">
 							<Link to="/faq">Faq</Link>
 						</li>
-						<li className="px-2 text-xl font-semibold">
+						<li className="px-2 py-1 text-xl font-semibold">
 							<Link to="/blog">Blog</Link>
 						</li>
-						<li className="px-2 text-xl font-semibold flex items-center">
+						<li className="px-2 py-1 text-xl font-semibold flex items-center">
 							<Link to="/">
 								<>
 									{isDarkMode ? (
@@ -58,7 +58,7 @@ const Header = ({ handleToggleTheme, isDarkMode }) => {
 								</>
 							</Link>
 						</li>
-						<li className="px-2 text-xl font-semibold flex items-center">
+						<li className="px-2 py-1 text-xl font-semibold flex items-center">
 							<Link to="/">
 								{user?.uid ? (
 									<img
@@ -73,7 +73,7 @@ const Header = ({ handleToggleTheme, isDarkMode }) => {
 								)}
 							</Link>
 						</li>
-						<li className="px-2 text-xl font-semibold">
+						<li className="px-2 py-1 text-xl font-semibold">
 							{user?.uid ? (
 								(
 									<button className="btn" onClick={handleLogOut}>
