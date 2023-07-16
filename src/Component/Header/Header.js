@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { HiOutlineSun } from "react-icons/hi";
+import { HiOutlineSun, HiMoon } from "react-icons/hi";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { CgProfile } from "react-icons/cg";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 
-const Header = () => {
+const Header = ({ handleToggleTheme, isDarkMode }) => {
 	const { user, logOut } = useContext(AuthContext);
+	const [open, setOpen] = useState(false);
 
 	const handleLogOut = async () => {
 		try {
@@ -17,12 +19,22 @@ const Header = () => {
 
 	return (
 		<div className="bg-blue-950">
-			<div className="container mx-auto px-20 py-5 text-white">
+			<div className="lg:container mx-auto px-20 py-5 text-white">
 				<ul className="flex justify-between items-center">
 					<li className="text-2xl font-bold">
 						<Link to="/">TeqWeb</Link>
 					</li>
-					<ul className="flex items-center">
+					<div
+						onClick={() => setOpen(!open)}
+						className="h-6 w-6  text-white md:hidden"
+					>
+						<Bars3Icon />
+					</div>
+					<ul
+						className={`md:flex bg-blue-950 items-center justify-end md:static w-full absolute duration-500 ${
+							open ? "top-[70px]" : "top-[-300px]"
+						}`}
+					>
 						<li className="px-2 text-xl font-semibold">
 							<Link to="/">Home</Link>
 						</li>
@@ -37,7 +49,13 @@ const Header = () => {
 						</li>
 						<li className="px-2 text-xl font-semibold flex items-center">
 							<Link to="/">
-								<HiOutlineSun />
+								<>
+									{isDarkMode ? (
+										<HiMoon onClick={handleToggleTheme} />
+									) : (
+										<HiOutlineSun onClick={handleToggleTheme} />
+									)}
+								</>
 							</Link>
 						</li>
 						<li className="px-2 text-xl font-semibold flex items-center">

@@ -9,6 +9,9 @@ import ResetPassword from "../ResetPassword/ResetPassword";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Course from "../Course/Course";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Cards from "../Cards/Cards";
+import Details from "../Details/Details";
+import CheckOut from "../CheckOut/CheckOut";
 
 export const router = createBrowserRouter([
 	{
@@ -21,11 +24,32 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/course",
-				element: (
-					<PrivateRoute>
-						<Course></Course>
-					</PrivateRoute>
-				),
+				loader: () => fetch("http://localhost:5000/course"),
+				element: <Course></Course>,
+				children: [
+					{
+						path: "/course/:id",
+						loader: ({ params }) =>
+							fetch(`http://localhost:5000/catcourse/${params.id}`),
+						element: <Cards></Cards>,
+					},
+					{
+						path: "/course/details/:id",
+						loader: ({ params }) =>
+						fetch(`http://localhost:5000/courseDetails/${params.id}`),
+						element: <Details></Details>,
+					},
+					// {
+					// 	path: "/course/details/checkout/:id",
+					// 	// loader: ({ params }) =>
+					// 		// fetch(`http://localhost:5000/courseDetails/${params.id}`),
+					// 	element: (
+					// 		<PrivateRoute>
+					<CheckOut></CheckOut>,
+					// 		</PrivateRoute>
+					// 	),
+					// },
+				],
 			},
 			{
 				path: "/faq",

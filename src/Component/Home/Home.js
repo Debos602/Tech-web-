@@ -17,7 +17,7 @@ const Home = () => {
 						style={{
 							width: "100%",
 							height: "580px",
-							filter: "blur(4px)",
+							filter: "blur(2px)",
 							zIndex: -1,
 						}}
 					/>

@@ -5,7 +5,7 @@ const SingleCard = () => {
 	return (
 		<div style={{ top: "32rem" }} className="absolute container mx-auto px-20">
 			<div className="">
-				<div className="flex flex-wrap justify-between -mx-4 md:mt-0 -mt-5">
+				<div className="flex flex-wrap justify-between -mx-4 md:mt-0 -mt-0">
 					<div className="px-4 w-full md:w-1/3 md:mt-0 mt-5">
 						<div className="card bg-base-100 shadow-xl bg-color">
 							<div className="card-body">
