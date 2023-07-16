@@ -8,9 +8,9 @@ import TrainingSection from "../TrainingSection/TrainingSection";
 
 const Home = () => {
 	return (
-		<div className="relative">
+		<div className="relative z-10">
 			<>
-				<div className="min-h-screen relative">
+				<div className="md:min-h-screen relative">
 					<img
 						src={Image}
 						alt=""

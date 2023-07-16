@@ -18,8 +18,8 @@ const Header = ({ handleToggleTheme, isDarkMode }) => {
 	};
 
 	return (
-		<div className="bg-blue-950">
-			<div className="lg:container mx-auto px-20 py-5 text-white">
+		<div className="bg-blue-950 relative z-20">
+			<div className="lg:container mx-auto px-3 md:px-20 py-5 text-white">
 				<ul className="flex justify-between items-center">
 					<li className="text-2xl font-bold">
 						<Link to="/">TeqWeb</Link>
@@ -31,7 +31,7 @@ const Header = ({ handleToggleTheme, isDarkMode }) => {
 						<Bars3Icon />
 					</div>
 					<ul
-						className={`md:flex bg-blue-950 items-center justify-end md:static w-full absolute duration-500 ${
+						className={`left-0 md:flex bg-blue-950 items-center justify-end md:static w-full absolute duration-500 ${
 							open ? "top-[70px]" : "top-[-300px]"
 						}`}
 					>
@@ -60,7 +60,7 @@ const Header = ({ handleToggleTheme, isDarkMode }) => {
 						</li>
 						<li className="px-2 text-xl font-semibold flex items-center">
 							<Link to="/">
-								{user?.email ? (
+								{user?.uid ? (
 									<img
 										className="rounded-full"
 										style={{ height: 40, width: 40 }}
@@ -74,7 +74,7 @@ const Header = ({ handleToggleTheme, isDarkMode }) => {
 							</Link>
 						</li>
 						<li className="px-2 text-xl font-semibold">
-							{user?.email ? (
+							{user?.uid ? (
 								(
 									<button className="btn" onClick={handleLogOut}>
 										Log out

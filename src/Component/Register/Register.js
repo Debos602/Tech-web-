@@ -60,6 +60,7 @@ const Register = () => {
 	const handleLogOut = async () => {
 		try {
 			await logOut();
+			navigate("/login");
 		} catch (error) {
 			console.error(error);
 		}
