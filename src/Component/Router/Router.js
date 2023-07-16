@@ -36,19 +36,19 @@ export const router = createBrowserRouter([
 					{
 						path: "/course/details/:id",
 						loader: ({ params }) =>
-						fetch(`http://localhost:5000/courseDetails/${params.id}`),
+							fetch(`http://localhost:5000/courseDetails/${params.id}`),
 						element: <Details></Details>,
 					},
-					// {
-					// 	path: "/course/details/checkout/:id",
-					// 	// loader: ({ params }) =>
-					// 		// fetch(`http://localhost:5000/courseDetails/${params.id}`),
-					// 	element: (
-					// 		<PrivateRoute>
-					<CheckOut></CheckOut>,
-					// 		</PrivateRoute>
-					// 	),
-					// },
+					{
+						path: "/course/details/checkout/:id",
+						loader: ({ params }) =>
+							fetch(`http://localhost:5000/courseDetails/${params.id}`),
+						element: (
+							<PrivateRoute>
+								<CheckOut></CheckOut>,
+							</PrivateRoute>
+						),
+					},
 				],
 			},
 			{
