@@ -5,7 +5,7 @@ import Card from "../Card/Card";
 const Cards = () => {
 	const allCard = useLoaderData();
 	return (
-		<div>
+		<div className="px-5">
 			<h2 className="text-end text-xl font-bold">
 				Total Card: {allCard?.length}
 			</h2>
