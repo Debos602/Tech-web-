@@ -18,3 +18,7 @@ for firebase deploy
 
 * framework
   daisy ui and tailwind css
+* Icons
+react icons, heroicons
+* Pdf
+  react @pdf renederer
