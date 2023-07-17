@@ -24,25 +24,29 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/course",
-				loader: () => fetch("http://localhost:5000/course"),
+				loader: () => fetch("https://teq-web-server.vercel.app/course"),
 				element: <Course></Course>,
 				children: [
 					{
 						path: "/course/:id",
 						loader: ({ params }) =>
-							fetch(`http://localhost:5000/catcourse/${params.id}`),
+							fetch(`https://teq-web-server.vercel.app/catcourse/${params.id}`),
 						element: <Cards></Cards>,
 					},
 					{
 						path: "/course/details/:id",
 						loader: ({ params }) =>
-							fetch(`http://localhost:5000/courseDetails/${params.id}`),
+							fetch(
+								`https://teq-web-server.vercel.app/courseDetails/${params.id}`
+							),
 						element: <Details></Details>,
 					},
 					{
 						path: "/course/details/checkout/:id",
 						loader: ({ params }) =>
-						fetch(`http://localhost:5000/courseDetails/${params.id}`),
+							fetch(
+								`https://teq-web-server.vercel.app/courseDetails/${params.id}`
+							),
 						element: (
 							<PrivateRoute>
 								<CheckOut></CheckOut>,
