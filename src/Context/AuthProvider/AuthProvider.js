@@ -48,10 +48,6 @@ const AuthProvider = ({ children }) => {
 		setLoading(true);
 		return sendPasswordResetEmail(auth, email);
 	};
-
-	const verifyEmail = () => {
-		return sendEmailVerification(auth.currentUser);
-	};
 	const logOut = () => {
 		setLoading(true);
 		return signOut(auth);
@@ -59,9 +55,6 @@ const AuthProvider = ({ children }) => {
 
 	useEffect(() => {
 		const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-			// if (currentUser == null || currentUser.emailVerified) {
-			// 	setUser(currentUser);
-			// }
 			setUser(currentUser);
 			setLoading(false);
 		});
@@ -79,7 +72,6 @@ const AuthProvider = ({ children }) => {
 		googleSignIn,
 		githubSignIn,
 		resetPassword,
-		verifyEmail,
 	};
 	return (
 		<AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

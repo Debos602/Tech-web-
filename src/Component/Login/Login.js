@@ -23,11 +23,6 @@ const Login = () => {
 				console.log(user);
 				form.reset();
 				navigate(from, { replace: true });
-				// if (user?.emailVerified) {
-				// 	navigate(from, { replace: true });
-				// } else {
-				// 	setError("Your email is not verified. Please verify your email.");
-				// }
 			})
 			.catch((error) => {
 				console.log(error);

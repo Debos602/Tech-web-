@@ -4,15 +4,13 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const Register = () => {
-	const { createUser, updateUserData, verifyEmail, logOut } =
-		useContext(AuthContext);
+	const { createUser, updateUserData, logOut } = useContext(AuthContext);
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [error, setError] = useState(null);
 	const navigate = useNavigate();
 
 	const handleEmailPassword = (event) => {
 		event.preventDefault();
-		// console.log(event.target.form.email.value);
 		const form = event.target;
 		const name = form.name.value;
 		const photo = form.photoURL.value;
@@ -28,7 +26,6 @@ const Register = () => {
 			.then((result) => {
 				const user = result.user;
 				handleUpdateUserData(name, photo);
-				// handleEmailVerification();
 				navigate("/login");
 				handleLogOut();
 				console.log(user);
@@ -50,13 +47,6 @@ const Register = () => {
 			.then(() => {})
 			.catch((error) => console.log(error));
 	};
-
-	// const handleEmailVerification = () => {
-	// 	verifyEmail()
-	// 		.then(() => {})
-
-	// 		.catch((error) => console.error(error));
-	// };
 	const handleLogOut = async () => {
 		try {
 			await logOut();
