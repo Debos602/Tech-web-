@@ -22,7 +22,7 @@ const Header = ({ handleToggleTheme, isDarkMode }) => {
 			<div className="lg:container mx-auto px-3 md:px-20 py-5 text-white">
 				<ul className="flex justify-between items-center">
 					<li className="text-2xl font-bold">
-						<Link to="/">TeqWeb</Link>
+						<Link to="/">TechWeb</Link>
 					</li>
 					<div
 						onClick={() => setOpen(!open)}
